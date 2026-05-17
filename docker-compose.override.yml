@@ -1,0 +1,23 @@
+services:
+  backend:
+    environment:
+      - APP_ENV=development
+      - FLASK_APP=app.py
+      # mismos datos exactos que usa la base de datos en la red interna de Docker:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=${DB_NAME:-notesdb}
+      - DB_USER=${DB_USER:-postgres}
+      - DB_PASSWORD=${DB_PASSWORD:-postgres}
+    volumes:
+      # carpeta completa para asegurarnos de que Flask lea todo el entorno de desarrollo
+      - ./backend:/app
+    command: ["python3", "-m", "flask", "run", "--host=0.0.0.0", "--port=5000", "--debug"]
+
+  db:
+    ports:
+      - "5432:5432"
+
+  frontend:
+    ports:
+      - "8085:80"
