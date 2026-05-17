@@ -76,9 +76,8 @@ jobs:
         run: pip install -r backend/requirements.txt
 
       - name: Correr tests con cobertura
-      - name: Run Tests
         run: |
-          docker-compose exec -T backend pytest tests/ \
+          docker-compose run backend pytest tests/ \
             --cov=. \
             --cov-report=term-missing \
             --cov-report=xml \
