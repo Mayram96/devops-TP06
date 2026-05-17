@@ -41,10 +41,10 @@ jobs:
 
       - name: Instalar dependencias de lint
         run: pip install flake8 yamllint
-
       - name: Lint Python (flake8)
         run: |
-          flake8 backend/ / --ignore=E302,E305,E401,E702,E402,E501
+          flake8 backend/ \
+            --ignore=E302,E305,E401,E702,E402,E501 \
             --max-line-length=100 \
             --exclude=backend/tests/ \
             --count --statistics
