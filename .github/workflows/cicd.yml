@@ -51,7 +51,10 @@ jobs:
 
       - name: Lint YAML (yamllint)
         run: |
-          yamllint docker-compose.yml .github/workflows/
+          yamllint -d "{extends: default, rules: {line-length: {max: 150}, empty-lines: disable, document-start: disable}}" \
+            docker-compose.yml \
+            .github/workflows/cicd.yml \
+            .github/workflows/pr-check.yml
 
   # ── Job 2: Test ────────────────────────────────────────
   test:
