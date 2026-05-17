@@ -52,9 +52,9 @@ jobs:
       - name: Lint YAML (yamllint)
         run: |
           yamllint -d "{extends: default, rules: {line-length: {max: 150}, empty-lines: disable, document-start: disable}}" \
-            docker-compose.yml \
-            .github/workflows/cicd.yml \
-            .github/workflows/pr-check.yml
+          docker-compose.yml \
+          .github/workflows/cicd.yml \
+          .github/workflows/pr-check.yml
 
   # ── Job 2: Test ────────────────────────────────────────
   test:
@@ -76,9 +76,9 @@ jobs:
         run: pip install -r backend/requirements.txt
 
       - name: Correr tests con cobertura
+      - name: Run Tests
         run: |
-          cd backend
-          pytest tests/ \
+          docker-compose exec -T backend pytest tests/ \
             --cov=. \
             --cov-report=term-missing \
             --cov-report=xml \
