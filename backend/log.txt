@@ -1,0 +1,2 @@
+time="2026-05-18T13:02:34Z" level=info msg="Using docker host 'unix:///var/run/docker.sock', and daemon socket 'unix:///var/run/docker.sock'"
+Error: stat /home/mayra/devops-TP06/backend/.github/workflows: no such file or directory

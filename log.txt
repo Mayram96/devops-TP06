@@ -1,0 +1,608 @@
+time="2026-05-18T13:04:12Z" level=info msg="Using docker host 'unix:///var/run/docker.sock', and daemon socket 'unix:///var/run/docker.sock'"
+time="2026-05-18T13:04:12Z" level=info msg="deleted cache: &{ID:65 Key:setup-python-linux-x64-24.04-ubuntu-python-3.12.13-pip-474c69c3e80f1ad84b3f29e870d43fa9c73ca9cdebd5c07e995752394c80292c Version:dc4f892d7358e35233e412252917e6c8e7bf9fdeb0aa86c0a09998b5a784f0af Size:39965 Complete:true UsedAt:1779109133 CreatedAt:1779072279}" module=artifactcache
+[CI/CD Pipeline/Lint] ⭐ Run Set up job
+[CI/CD Pipeline/Lint] 🚀  Start image=catthehacker/ubuntu:act-latest
+[CI/CD Pipeline/Lint]   🐳  docker pull image=catthehacker/ubuntu:act-latest platform= username= forcePull=true
+[CI/CD Pipeline/Lint] using DockerAuthConfig authentication for docker pull
+[CI/CD Pipeline/Lint]   🐳  docker create image=catthehacker/ubuntu:act-latest platform= entrypoint=["tail" "-f" "/dev/null"] cmd=[] network="host"
+[CI/CD Pipeline/Lint]   🐳  docker run image=catthehacker/ubuntu:act-latest platform= entrypoint=["tail" "-f" "/dev/null"] cmd=[] network="host"
+[CI/CD Pipeline/Lint]   🐳  docker exec cmd=[node --no-warnings -e console.log(process.execPath)] user= workdir=
+[CI/CD Pipeline/Lint]   ✅  Success - Set up job
+[CI/CD Pipeline/Lint]   ☁  git clone 'https://github.com/actions/setup-python' # ref=v5
+[CI/CD Pipeline/Lint] ⭐ Run Main Checkout código
+[CI/CD Pipeline/Lint]   🐳  docker cp src=/home/mayra/devops-TP06/. dst=/home/mayra/devops-TP06
+[CI/CD Pipeline/Lint]   ✅  Success - Main Checkout código [238.126269ms]
+[CI/CD Pipeline/Lint] ⭐ Run Main Setup Python
+[CI/CD Pipeline/Lint]   🐳  docker cp src=/home/mayra/.cache/act/actions-setup-python@v5/ dst=/var/run/act/actions/actions-setup-python@v5/
+[CI/CD Pipeline/Lint]   🐳  docker exec cmd=[/opt/acttoolcache/node/24.15.0/x64/bin/node /var/run/act/actions/actions-setup-python@v5/dist/setup/index.js] user= workdir=
+[CI/CD Pipeline/Lint]   ❓  ::group::Installed versions
+[CI/CD Pipeline/Lint]   | Successfully set up CPython (3.12.13)
+[CI/CD Pipeline/Lint]   ❓  ::endgroup::
+[CI/CD Pipeline/Lint]   | (node:31) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+[CI/CD Pipeline/Lint]   | (Use `node --trace-deprecation ...` to show where the warning was created)
+[CI/CD Pipeline/Lint]   | [command]/opt/hostedtoolcache/Python/3.12.13/x64/bin/pip cache dir
+[CI/CD Pipeline/Lint]   | /root/.cache/pip
+[CI/CD Pipeline/Lint]   ⚙  ***
+[CI/CD Pipeline/Lint]   | Cache Size: ~0 MB (39945 B)
+[CI/CD Pipeline/Lint]   | [command]/usr/bin/tar -xf /tmp/b24f571e-a269-43da-8a38-b38fa5332cf7/cache.tzst -P -C /home/mayra/devops-TP06 --use-compress-program unzstd
+[CI/CD Pipeline/Lint]   | Cache restored successfully
+[CI/CD Pipeline/Lint]   | Cache restored from key: setup-python-linux-x64-24.04-ubuntu-python-3.12.13-pip-474c69c3e80f1ad84b3f29e870d43fa9c73ca9cdebd5c07e995752394c80292c
+[CI/CD Pipeline/Lint]   ❓ add-matcher /run/act/actions/actions-setup-python@v5/.github/python.json
+[CI/CD Pipeline/Lint]   ✅  Success - Main Setup Python [4.125564825s]
+[CI/CD Pipeline/Lint]   ⚙  ::set-env:: Python3_ROOT_DIR=/opt/hostedtoolcache/Python/3.12.13/x64
+[CI/CD Pipeline/Lint]   ⚙  ::set-env:: LD_LIBRARY_PATH=/opt/hostedtoolcache/Python/3.12.13/x64/lib
+[CI/CD Pipeline/Lint]   ⚙  ::set-env:: pythonLocation=/opt/hostedtoolcache/Python/3.12.13/x64
+[CI/CD Pipeline/Lint]   ⚙  ::set-env:: PKG_CONFIG_PATH=/opt/hostedtoolcache/Python/3.12.13/x64/lib/pkgconfig
+[CI/CD Pipeline/Lint]   ⚙  ::set-env:: Python_ROOT_DIR=/opt/hostedtoolcache/Python/3.12.13/x64
+[CI/CD Pipeline/Lint]   ⚙  ::set-env:: Python2_ROOT_DIR=/opt/hostedtoolcache/Python/3.12.13/x64
+[CI/CD Pipeline/Lint]   ⚙  ::set-output:: python-version=3.12.13
+[CI/CD Pipeline/Lint]   ⚙  ::set-output:: python-path=/opt/hostedtoolcache/Python/3.12.13/x64/bin/python
+[CI/CD Pipeline/Lint]   ⚙  ::set-output:: cache-hit=false
+[CI/CD Pipeline/Lint]   ⚙  ::add-path:: /opt/hostedtoolcache/Python/3.12.13/x64
+[CI/CD Pipeline/Lint]   ⚙  ::add-path:: /opt/hostedtoolcache/Python/3.12.13/x64/bin
+[CI/CD Pipeline/Lint] ⭐ Run Main Instalar dependencias de lint
+[CI/CD Pipeline/Lint]   🐳  docker exec cmd=[bash -e /var/run/act/workflow/2] user= workdir=
+[CI/CD Pipeline/Lint]   | Requirement already satisfied: flake8 in /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages (7.0.0)
+[CI/CD Pipeline/Lint]   | Requirement already satisfied: yamllint in /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages (1.38.0)
+[CI/CD Pipeline/Lint]   | Requirement already satisfied: mccabe<0.8.0,>=0.7.0 in /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages (from flake8) (0.7.0)
+[CI/CD Pipeline/Lint]   | Requirement already satisfied: pycodestyle<2.12.0,>=2.11.0 in /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages (from flake8) (2.11.1)
+[CI/CD Pipeline/Lint]   | Requirement already satisfied: pyflakes<3.3.0,>=3.2.0 in /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages (from flake8) (3.2.0)
+[CI/CD Pipeline/Lint]   | Requirement already satisfied: pathspec>=1.0.0 in /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages (from yamllint) (1.1.1)
+[CI/CD Pipeline/Lint]   | Requirement already satisfied: pyyaml in /opt/hostedtoolcache/Python/3.12.13/x64/lib/python3.12/site-packages (from yamllint) (6.0.3)
+[CI/CD Pipeline/Lint]   | WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[CI/CD Pipeline/Lint]   ✅  Success - Main Instalar dependencias de lint [1.925764139s]
+[CI/CD Pipeline/Lint] ⭐ Run Main Lint Python (flake8)
+[CI/CD Pipeline/Lint]   🐳  docker exec cmd=[bash -e /var/run/act/workflow/3] user= workdir=
+[CI/CD Pipeline/Lint]   | 0
+[CI/CD Pipeline/Lint]   ✅  Success - Main Lint Python (flake8) [969.938668ms]
+[CI/CD Pipeline/Lint] ⭐ Run Main Lint YAML (yamllint)
+[CI/CD Pipeline/Lint]   🐳  docker exec cmd=[bash -e /var/run/act/workflow/4] user= workdir=
+[CI/CD Pipeline/Lint]   ✅  Success - Main Lint YAML (yamllint) [953.107248ms]
+[CI/CD Pipeline/Lint] ⭐ Run Post Setup Python
+[CI/CD Pipeline/Lint]   🐳  docker exec cmd=[/opt/acttoolcache/node/24.15.0/x64/bin/node /var/run/act/actions/actions-setup-python@v5/dist/cache-save/index.js] user= workdir=
+[CI/CD Pipeline/Lint]   | (node:106) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+[CI/CD Pipeline/Lint]   | (Use `node --trace-deprecation ...` to show where the warning was created)
+[CI/CD Pipeline/Lint]   | [command]/usr/bin/tar --posix -cf cache.tzst --exclude cache.tzst -P -C /home/mayra/devops-TP06 --files-from manifest.txt --use-compress-program zstdmt
+[CI/CD Pipeline/Lint]   | Cache Size: ~0 MB (39936 B)
+[CI/CD Pipeline/Lint]   | Cache saved successfully
+[CI/CD Pipeline/Lint]   | Cache saved with the key: setup-python-Linux-x64-24.04-Ubuntu-python-3.12.13-pip-474c69c3e80f1ad84b3f29e870d43fa9c73ca9cdebd5c07e995752394c80292c
+[CI/CD Pipeline/Lint]   ✅  Success - Post Setup Python [1.149694801s]
+[CI/CD Pipeline/Lint] ⭐ Run Complete job
+[CI/CD Pipeline/Lint] Cleaning up container for job Lint
+[CI/CD Pipeline/Lint]   ✅  Success - Complete job
+[CI/CD Pipeline/Lint] 🏁  Job succeeded
+[CI/CD Pipeline/Test] ⭐ Run Set up job
+[CI/CD Pipeline/Test] 🚀  Start image=catthehacker/ubuntu:act-latest
+[CI/CD Pipeline/Test]   🐳  docker pull image=catthehacker/ubuntu:act-latest platform= username= forcePull=true
+[CI/CD Pipeline/Test] using DockerAuthConfig authentication for docker pull
+[CI/CD Pipeline/Test]   🐳  docker create image=catthehacker/ubuntu:act-latest platform= entrypoint=["tail" "-f" "/dev/null"] cmd=[] network="host"
+[CI/CD Pipeline/Test]   🐳  docker run image=catthehacker/ubuntu:act-latest platform= entrypoint=["tail" "-f" "/dev/null"] cmd=[] network="host"
+[CI/CD Pipeline/Test]   🐳  docker exec cmd=[node --no-warnings -e console.log(process.execPath)] user= workdir=
+[CI/CD Pipeline/Test]   ✅  Success - Set up job
+[CI/CD Pipeline/Test]   ☁  git clone 'https://github.com/docker/setup-buildx-action' # ref=v3
+[CI/CD Pipeline/Test]   ☁  git clone 'https://github.com/actions/upload-artifact' # ref=v4
+[CI/CD Pipeline/Test] ⭐ Run Main Checkout código
+[CI/CD Pipeline/Test]   🐳  docker cp src=/home/mayra/devops-TP06/. dst=/home/mayra/devops-TP06
+[CI/CD Pipeline/Test]   ✅  Success - Main Checkout código [462.656473ms]
+[CI/CD Pipeline/Test] ⭐ Run Main Setup Docker Buildx
+[CI/CD Pipeline/Test]   🐳  docker cp src=/home/mayra/.cache/act/docker-setup-buildx-action@v3/ dst=/var/run/act/actions/docker-setup-buildx-action@v3/
+[CI/CD Pipeline/Test]   🐳  docker exec cmd=[/opt/acttoolcache/node/24.15.0/x64/bin/node /var/run/act/actions/docker-setup-buildx-action@v3/dist/index.js] user= workdir=
+[CI/CD Pipeline/Test]   | (node:30) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+[CI/CD Pipeline/Test]   | (Use `node --trace-deprecation ...` to show where the warning was created)
+[CI/CD Pipeline/Test]   ❓  ::group::Docker info
+[CI/CD Pipeline/Test]   | [command]/usr/bin/docker version
+[CI/CD Pipeline/Test]   | Client:
+[CI/CD Pipeline/Test]   |  Version:           29.4.3-1
+[CI/CD Pipeline/Test]   |  API version:       1.54
+[CI/CD Pipeline/Test]   |  Go version:        go1.26.2
+[CI/CD Pipeline/Test]   |  Git commit:        055a478ea9010a19d0d4674c0d0e87ade37a4223
+[CI/CD Pipeline/Test]   |  Built:             Fri May  8 07:42:23 2026
+[CI/CD Pipeline/Test]   |  OS/Arch:           linux/amd64
+[CI/CD Pipeline/Test]   |  Context:           default
+[CI/CD Pipeline/Test]   | 
+[CI/CD Pipeline/Test]   | Server: Docker Desktop 4.71.0 (225177)
+[CI/CD Pipeline/Test]   |  Engine:
+[CI/CD Pipeline/Test]   |   Version:          29.4.1
+[CI/CD Pipeline/Test]   |   API version:      1.54 (minimum version 1.40)
+[CI/CD Pipeline/Test]   |   Go version:       go1.26.2
+[CI/CD Pipeline/Test]   |   Git commit:       6c91b92
+[CI/CD Pipeline/Test]   |   Built:            Mon Apr 20 16:32:41 2026
+[CI/CD Pipeline/Test]   |   OS/Arch:          linux/amd64
+[CI/CD Pipeline/Test]   |   Experimental:     false
+[CI/CD Pipeline/Test]   |  containerd:
+[CI/CD Pipeline/Test]   |   Version:          v2.2.3
+[CI/CD Pipeline/Test]   |   GitCommit:        77c84241c7cbdd9b4eca2591793e3d4f4317c590
+[CI/CD Pipeline/Test]   |  runc:
+[CI/CD Pipeline/Test]   |   Version:          1.3.5
+[CI/CD Pipeline/Test]   |   GitCommit:        v1.3.5-0-g488fc13e
+[CI/CD Pipeline/Test]   |  docker-init:
+[CI/CD Pipeline/Test]   |   Version:          0.19.0
+[CI/CD Pipeline/Test]   |   GitCommit:        de40ad0
+[CI/CD Pipeline/Test]   | [command]/usr/bin/docker info
+[CI/CD Pipeline/Test]   | Client:
+[CI/CD Pipeline/Test]   |  Version:    29.4.3-1
+[CI/CD Pipeline/Test]   |  Context:    default
+[CI/CD Pipeline/Test]   |  Debug Mode: false
+[CI/CD Pipeline/Test]   |  Plugins:
+[CI/CD Pipeline/Test]   |   buildx: Docker Buildx (Docker Inc.)
+[CI/CD Pipeline/Test]   |     Version:  0.33.0-1
+[CI/CD Pipeline/Test]   |     Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+[CI/CD Pipeline/Test]   |   compose: Docker Compose (Docker Inc.)
+[CI/CD Pipeline/Test]   |     Version:  5.1.3-1
+[CI/CD Pipeline/Test]   |     Path:     /usr/libexec/docker/cli-plugins/docker-compose
+[CI/CD Pipeline/Test]   | 
+[CI/CD Pipeline/Test]   | Server:
+[CI/CD Pipeline/Test]   |  Containers: 4
+[CI/CD Pipeline/Test]   |   Running: 3
+[CI/CD Pipeline/Test]   |   Paused: 0
+[CI/CD Pipeline/Test]   |   Stopped: 1
+[CI/CD Pipeline/Test]   |  Images: 12
+[CI/CD Pipeline/Test]   |  Server Version: 29.4.1
+[CI/CD Pipeline/Test]   |  Storage Driver: overlayfs
+[CI/CD Pipeline/Test]   |   driver-type: io.containerd.snapshotter.v1
+[CI/CD Pipeline/Test]   |  Logging Driver: json-file
+[CI/CD Pipeline/Test]   |  Cgroup Driver: cgroupfs
+[CI/CD Pipeline/Test]   |  Cgroup Version: 2
+[CI/CD Pipeline/Test]   |  Plugins:
+[CI/CD Pipeline/Test]   |   Volume: local
+[CI/CD Pipeline/Test]   |   Network: bridge host ipvlan macvlan null overlay
+[CI/CD Pipeline/Test]   |   Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+[CI/CD Pipeline/Test]   |  CDI spec directories:
+[CI/CD Pipeline/Test]   |   /etc/cdi
+[CI/CD Pipeline/Test]   |   /var/run/cdi
+[CI/CD Pipeline/Test]   |  Discovered Devices:
+[CI/CD Pipeline/Test]   |   cdi: docker.com/gpu=webgpu
+[CI/CD Pipeline/Test]   |  Swarm: inactive
+[CI/CD Pipeline/Test]   |  Runtimes: io.containerd.runc.v2 nvidia runc
+[CI/CD Pipeline/Test]   |  Default Runtime: runc
+[CI/CD Pipeline/Test]   |  Init Binary: docker-init
+[CI/CD Pipeline/Test]   |  containerd version: 77c84241c7cbdd9b4eca2591793e3d4f4317c590
+[CI/CD Pipeline/Test]   |  runc version: v1.3.5-0-g488fc13e
+[CI/CD Pipeline/Test]   |  init version: de40ad0
+[CI/CD Pipeline/Test]   |  Security Options:
+[CI/CD Pipeline/Test]   |   seccomp
+[CI/CD Pipeline/Test]   |    Profile: builtin
+[CI/CD Pipeline/Test]   |   cgroupns
+[CI/CD Pipeline/Test]   |  Kernel Version: 6.6.114.1-microsoft-standard-WSL2
+[CI/CD Pipeline/Test]   |  Operating System: Docker Desktop
+[CI/CD Pipeline/Test]   |  OSType: linux
+[CI/CD Pipeline/Test]   |  Architecture: x86_64
+[CI/CD Pipeline/Test]   |  CPUs: 4
+[CI/CD Pipeline/Test]   |  Total Memory: 3.653GiB
+[CI/CD Pipeline/Test]   |  Name: docker-desktop
+[CI/CD Pipeline/Test]   |  ID: 4fd785cc-d44c-4c2a-9a76-d9750e3bcd08
+[CI/CD Pipeline/Test]   |  Docker Root Dir: /var/lib/docker
+[CI/CD Pipeline/Test]   |  Debug Mode: false
+[CI/CD Pipeline/Test]   |  HTTP Proxy: http.docker.internal:3128
+[CI/CD Pipeline/Test]   |  HTTPS Proxy: http.docker.internal:3128
+[CI/CD Pipeline/Test]   |  No Proxy: hubproxy.docker.internal
+[CI/CD Pipeline/Test]   |  Labels:
+[CI/CD Pipeline/Test]   |   com.docker.desktop.address=unix:///var/run/docker-cli.sock
+[CI/CD Pipeline/Test]   |  Experimental: false
+[CI/CD Pipeline/Test]   |  Insecure Registries:
+[CI/CD Pipeline/Test]   |   hubproxy.docker.internal:5555
+[CI/CD Pipeline/Test]   |   ::1/128
+[CI/CD Pipeline/Test]   |   127.0.0.0/8
+[CI/CD Pipeline/Test]   |  Live Restore Enabled: false
+[CI/CD Pipeline/Test]   |  Firewall Backend: iptables
+[CI/CD Pipeline/Test]   | 
+[CI/CD Pipeline/Test]   ❓  ::endgroup::
+[CI/CD Pipeline/Test]   ❓  ::group::Buildx version
+[CI/CD Pipeline/Test]   | [command]/usr/bin/docker buildx version
+[CI/CD Pipeline/Test]   | github.com/docker/buildx 0.33.0-1 f7897eba028583e0071642db3c011e860444f8cf
+[CI/CD Pipeline/Test]   ❓  ::endgroup::
+[CI/CD Pipeline/Test]   ❓  ::group::Inspecting default docker context
+[CI/CD Pipeline/Test]   | [
+[CI/CD Pipeline/Test]   |   {
+[CI/CD Pipeline/Test]   |     "Name": "default",
+[CI/CD Pipeline/Test]   |     "Metadata": {},
+[CI/CD Pipeline/Test]   |     "Endpoints": {
+[CI/CD Pipeline/Test]   |       "docker": {
+[CI/CD Pipeline/Test]   |         "Host": "unix:///var/run/docker.sock",
+[CI/CD Pipeline/Test]   |         "SkipTLSVerify": false
+[CI/CD Pipeline/Test]   |       }
+[CI/CD Pipeline/Test]   |     },
+[CI/CD Pipeline/Test]   |     "TLSMaterial": {},
+[CI/CD Pipeline/Test]   |     "Storage": {
+[CI/CD Pipeline/Test]   |       "MetadataPath": "<IN MEMORY>",
+[CI/CD Pipeline/Test]   |       "TLSPath": "<IN MEMORY>"
+[CI/CD Pipeline/Test]   |     }
+[CI/CD Pipeline/Test]   |   }
+[CI/CD Pipeline/Test]   | ]
+[CI/CD Pipeline/Test]   ❓  ::endgroup::
+[CI/CD Pipeline/Test]   ❓  ::group::Creating a new builder instance
+[CI/CD Pipeline/Test]   | [command]/usr/bin/docker buildx create --name builder-a829470b-296e-4a0d-8aa8-c0c8db319a00 --driver docker-container --buildkitd-flags --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host --use
+[CI/CD Pipeline/Test]   | builder-a829470b-296e-4a0d-8aa8-c0c8db319a00
+[CI/CD Pipeline/Test]   ❓  ::endgroup::
+[CI/CD Pipeline/Test]   ❓  ::group::Booting builder
+[CI/CD Pipeline/Test]   | [command]/usr/bin/docker buildx inspect --bootstrap --builder builder-a829470b-296e-4a0d-8aa8-c0c8db319a00
+[CI/CD Pipeline/Test]   | #1 [internal] booting buildkit
+[CI/CD Pipeline/Test]   | #1 pulling image moby/buildkit:buildx-stable-1
+[CI/CD Pipeline/Test]   | #1 pulling image moby/buildkit:buildx-stable-1 2.3s done
+[CI/CD Pipeline/Test]   | #1 creating container buildx_buildkit_builder-a829470b-296e-4a0d-8aa8-c0c8db319a000
+[CI/CD Pipeline/Test]   | #1 creating container buildx_buildkit_builder-a829470b-296e-4a0d-8aa8-c0c8db319a000 6.8s done
+[CI/CD Pipeline/Test]   | #1 DONE 9.2s
+[CI/CD Pipeline/Test]   | Name:          builder-a829470b-296e-4a0d-8aa8-c0c8db319a00
+[CI/CD Pipeline/Test]   | Driver:        docker-container
+[CI/CD Pipeline/Test]   | Last Activity: 2026-05-18 13:05:00 +0000 UTC
+[CI/CD Pipeline/Test]   | 
+[CI/CD Pipeline/Test]   | Nodes:
+[CI/CD Pipeline/Test]   | Name:                  builder-a829470b-296e-4a0d-8aa8-c0c8db319a000
+[CI/CD Pipeline/Test]   | Endpoint:              unix:///var/run/docker.sock
+[CI/CD Pipeline/Test]   | Status:                running
+[CI/CD Pipeline/Test]   | BuildKit daemon flags: --allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host
+[CI/CD Pipeline/Test]   | BuildKit version:      v0.29.0
+[CI/CD Pipeline/Test]   | Platforms:             linux/amd64, linux/amd64/v2, linux/amd64/v3, linux/arm64, linux/riscv64, linux/ppc64le, linux/s390x, linux/386, linux/arm/v7, linux/arm/v6
+[CI/CD Pipeline/Test]   | Labels:
+[CI/CD Pipeline/Test]   |  org.mobyproject.buildkit.worker.executor:         oci
+[CI/CD Pipeline/Test]   |  org.mobyproject.buildkit.worker.hostname:         4ecd1fb6dfa6
+[CI/CD Pipeline/Test]   |  org.mobyproject.buildkit.worker.network:          host
+[CI/CD Pipeline/Test]   |  org.mobyproject.buildkit.worker.oci.process-mode: sandbox
+[CI/CD Pipeline/Test]   |  org.mobyproject.buildkit.worker.selinux.enabled:  false
+[CI/CD Pipeline/Test]   |  org.mobyproject.buildkit.worker.snapshotter:      overlayfs
+[CI/CD Pipeline/Test]   | GC Policy rule#0:
+[CI/CD Pipeline/Test]   |  All:            false
+[CI/CD Pipeline/Test]   |  Filters:        type==source.local,type==exec.cachemount,type==source.git.checkout
+[CI/CD Pipeline/Test]   |  Keep Duration:  48h0m0s
+[CI/CD Pipeline/Test]   |  Max Used Space: 488.3MiB
+[CI/CD Pipeline/Test]   | GC Policy rule#1:
+[CI/CD Pipeline/Test]   |  All:            false
+[CI/CD Pipeline/Test]   |  Keep Duration:  1440h0m0s
+[CI/CD Pipeline/Test]   |  Reserved Space: 9.313GiB
+[CI/CD Pipeline/Test]   |  Max Used Space: 93.13GiB
+[CI/CD Pipeline/Test]   |  Min Free Space: 188.1GiB
+[CI/CD Pipeline/Test]   | GC Policy rule#2:
+[CI/CD Pipeline/Test]   |  All:            false
+[CI/CD Pipeline/Test]   |  Reserved Space: 9.313GiB
+[CI/CD Pipeline/Test]   |  Max Used Space: 93.13GiB
+[CI/CD Pipeline/Test]   |  Min Free Space: 188.1GiB
+[CI/CD Pipeline/Test]   | GC Policy rule#3:
+[CI/CD Pipeline/Test]   |  All:            true
+[CI/CD Pipeline/Test]   |  Reserved Space: 9.313GiB
+[CI/CD Pipeline/Test]   |  Max Used Space: 93.13GiB
+[CI/CD Pipeline/Test]   |  Min Free Space: 188.1GiB
+[CI/CD Pipeline/Test]   ❓  ::endgroup::
+[CI/CD Pipeline/Test]   ❓  ::group::Inspect builder
+[CI/CD Pipeline/Test]   | {
+[CI/CD Pipeline/Test]   |   "nodes": [
+[CI/CD Pipeline/Test]   |     {
+[CI/CD Pipeline/Test]   |       "name": "builder-a829470b-296e-4a0d-8aa8-c0c8db319a000",
+[CI/CD Pipeline/Test]   |       "endpoint": "unix:///var/run/docker.sock",
+[CI/CD Pipeline/Test]   |       "status": "running",
+[CI/CD Pipeline/Test]   |       "buildkitd-flags": "--allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host",
+[CI/CD Pipeline/Test]   |       "buildkit": "v0.29.0",
+[CI/CD Pipeline/Test]   |       "platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6",
+[CI/CD Pipeline/Test]   |       "features": {
+[CI/CD Pipeline/Test]   |         "Automatically load images to the Docker Engine image store": true,
+[CI/CD Pipeline/Test]   |         "Cache export": true,
+[CI/CD Pipeline/Test]   |         "Direct push": true,
+[CI/CD Pipeline/Test]   |         "Docker exporter": true,
+[CI/CD Pipeline/Test]   |         "Multi-platform build": true,
+[CI/CD Pipeline/Test]   |         "OCI exporter": true
+[CI/CD Pipeline/Test]   |       },
+[CI/CD Pipeline/Test]   |       "labels": {
+[CI/CD Pipeline/Test]   |         "org.mobyproject.buildkit.worker.executor": "oci",
+[CI/CD Pipeline/Test]   |         "org.mobyproject.buildkit.worker.hostname": "4ecd1fb6dfa6",
+[CI/CD Pipeline/Test]   |         "org.mobyproject.buildkit.worker.network": "host",
+[CI/CD Pipeline/Test]   |         "org.mobyproject.buildkit.worker.oci.process-mode": "sandbox",
+[CI/CD Pipeline/Test]   |         "org.mobyproject.buildkit.worker.selinux.enabled": "false",
+[CI/CD Pipeline/Test]   |         "org.mobyproject.buildkit.worker.snapshotter": "overlayfs"
+[CI/CD Pipeline/Test]   |       },
+[CI/CD Pipeline/Test]   |       "gcPolicy": [
+[CI/CD Pipeline/Test]   |         {
+[CI/CD Pipeline/Test]   |           "all": false,
+[CI/CD Pipeline/Test]   |           "filter": [
+[CI/CD Pipeline/Test]   |             "type==source.local",
+[CI/CD Pipeline/Test]   |             "type==exec.cachemount",
+[CI/CD Pipeline/Test]   |             "type==source.git.checkout"
+[CI/CD Pipeline/Test]   |           ],
+[CI/CD Pipeline/Test]   |           "keepDuration": "48h0m0s",
+[CI/CD Pipeline/Test]   |           "maxUsedSpace": "488.3MiB"
+[CI/CD Pipeline/Test]   |         },
+[CI/CD Pipeline/Test]   |         {
+[CI/CD Pipeline/Test]   |           "all": false,
+[CI/CD Pipeline/Test]   |           "keepDuration": "1440h0m0s",
+[CI/CD Pipeline/Test]   |           "reservedSpace": "9.313GiB",
+[CI/CD Pipeline/Test]   |           "maxUsedSpace": "93.13GiB",
+[CI/CD Pipeline/Test]   |           "minFreeSpace": "188.1GiB"
+[CI/CD Pipeline/Test]   |         },
+[CI/CD Pipeline/Test]   |         {
+[CI/CD Pipeline/Test]   |           "all": false,
+[CI/CD Pipeline/Test]   |           "reservedSpace": "9.313GiB",
+[CI/CD Pipeline/Test]   |           "maxUsedSpace": "93.13GiB",
+[CI/CD Pipeline/Test]   |           "minFreeSpace": "188.1GiB"
+[CI/CD Pipeline/Test]   |         },
+[CI/CD Pipeline/Test]   |         {
+[CI/CD Pipeline/Test]   |           "all": true,
+[CI/CD Pipeline/Test]   |           "reservedSpace": "9.313GiB",
+[CI/CD Pipeline/Test]   |           "maxUsedSpace": "93.13GiB",
+[CI/CD Pipeline/Test]   |           "minFreeSpace": "188.1GiB"
+[CI/CD Pipeline/Test]   |         }
+[CI/CD Pipeline/Test]   |       ]
+[CI/CD Pipeline/Test]   |     }
+[CI/CD Pipeline/Test]   |   ],
+[CI/CD Pipeline/Test]   |   "name": "builder-a829470b-296e-4a0d-8aa8-c0c8db319a00",
+[CI/CD Pipeline/Test]   |   "driver": "docker-container",
+[CI/CD Pipeline/Test]   |   "lastActivity": "2026-05-18T13:05:00.000Z"
+[CI/CD Pipeline/Test]   | }
+[CI/CD Pipeline/Test]   ❓  ::endgroup::
+[CI/CD Pipeline/Test]   ❓  ::group::BuildKit version
+[CI/CD Pipeline/Test]   | builder-a829470b-296e-4a0d-8aa8-c0c8db319a000: v0.29.0
+[CI/CD Pipeline/Test]   ❓  ::endgroup::
+[CI/CD Pipeline/Test]   ✅  Success - Main Setup Docker Buildx [19.677783608s]
+[CI/CD Pipeline/Test]   ⚙  ::set-output:: status=running
+[CI/CD Pipeline/Test]   ⚙  ::set-output:: flags=--allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host
+[CI/CD Pipeline/Test]   ⚙  ::set-output:: name=builder-a829470b-296e-4a0d-8aa8-c0c8db319a00
+[CI/CD Pipeline/Test]   ⚙  ::set-output:: driver=docker-container
+[CI/CD Pipeline/Test]   ⚙  ::set-output:: platforms=linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6
+[CI/CD Pipeline/Test]   ⚙  ::set-output:: nodes=[
+  {
+    "name": "builder-a829470b-296e-4a0d-8aa8-c0c8db319a000",
+    "endpoint": "unix:///var/run/docker.sock",
+    "status": "running",
+    "buildkitd-flags": "--allow-insecure-entitlement security.insecure --allow-insecure-entitlement network.host",
+    "buildkit": "v0.29.0",
+    "platforms": "linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6",
+    "features": {
+      "Automatically load images to the Docker Engine image store": true,
+      "Cache export": true,
+      "Direct push": true,
+      "Docker exporter": true,
+      "Multi-platform build": true,
+      "OCI exporter": true
+    },
+    "labels": {
+      "org.mobyproject.buildkit.worker.executor": "oci",
+      "org.mobyproject.buildkit.worker.hostname": "4ecd1fb6dfa6",
+      "org.mobyproject.buildkit.worker.network": "host",
+      "org.mobyproject.buildkit.worker.oci.process-mode": "sandbox",
+      "org.mobyproject.buildkit.worker.selinux.enabled": "false",
+      "org.mobyproject.buildkit.worker.snapshotter": "overlayfs"
+    },
+    "gcPolicy": [
+      {
+        "all": false,
+        "filter": [
+          "type==source.local",
+          "type==exec.cachemount",
+          "type==source.git.checkout"
+        ],
+        "keepDuration": "48h0m0s",
+        "maxUsedSpace": "488.3MiB"
+      },
+      {
+        "all": false,
+        "keepDuration": "1440h0m0s",
+        "reservedSpace": "9.313GiB",
+        "maxUsedSpace": "93.13GiB",
+        "minFreeSpace": "188.1GiB"
+      },
+      {
+        "all": false,
+        "reservedSpace": "9.313GiB",
+        "maxUsedSpace": "93.13GiB",
+        "minFreeSpace": "188.1GiB"
+      },
+      {
+        "all": true,
+        "reservedSpace": "9.313GiB",
+        "maxUsedSpace": "93.13GiB",
+        "minFreeSpace": "188.1GiB"
+      }
+    ]
+  }
+]
+[CI/CD Pipeline/Test]   ⚙  ::set-output:: endpoint=unix:///var/run/docker.sock
+[CI/CD Pipeline/Test] ⭐ Run Main Construir contenedor backend
+[CI/CD Pipeline/Test]   🐳  docker exec cmd=[bash -e /var/run/act/workflow/2] user= workdir=
+[CI/CD Pipeline/Test]   |  Image devops-tp06-backend Building 
+[CI/CD Pipeline/Test]   | #1 [internal] load local bake definitions
+[CI/CD Pipeline/Test]   | #1 reading from stdin 551B done
+[CI/CD Pipeline/Test]   | #1 DONE 0.0s
+[CI/CD Pipeline/Test]   | 
+[CI/CD Pipeline/Test]   | #2 [internal] load build definition from Dockerfile
+[CI/CD Pipeline/Test]   | #2 transferring dockerfile:
+[CI/CD Pipeline/Test]   | #2 transferring dockerfile: 993B done
+[CI/CD Pipeline/Test]   | #2 DONE 0.7s
+[CI/CD Pipeline/Test]   | 
+[CI/CD Pipeline/Test]   | #3 [internal] load metadata for docker.io/library/python:3.12-slim
+[CI/CD Pipeline/Test]   | #3 DONE 3.7s
+[CI/CD Pipeline/Test]   | 
+[CI/CD Pipeline/Test]   | #4 [internal] load .dockerignore
+[CI/CD Pipeline/Test]   | #4 transferring context:
+[CI/CD Pipeline/Test]   | #4 transferring context: 2B done
+[CI/CD Pipeline/Test]   | #4 DONE 0.6s
+[CI/CD Pipeline/Test]   | 
+[CI/CD Pipeline/Test]   | #5 [internal] load build context
+[CI/CD Pipeline/Test]   | #5 DONE 0.0s
+[CI/CD Pipeline/Test]   | 
+[CI/CD Pipeline/Test]   | #6 [builder 1/4] FROM docker.io/library/python:3.12-slim@sha256:401f6e1a67dad31a1bd78e9ad22d0ee0a3b52154e6bd30e90be696bb6a3d7461
+[CI/CD Pipeline/Test]   | #6 resolve docker.io/library/python:3.12-slim@sha256:401f6e1a67dad31a1bd78e9ad22d0ee0a3b52154e6bd30e90be696bb6a3d7461 0.1s done
+[CI/CD Pipeline/Test]   | #6 DONE 0.5s
+[CI/CD Pipeline/Test]   | 
+[CI/CD Pipeline/Test]   | #5 [internal] load build context
+[CI/CD Pipeline/Test]   | #5 transferring context: 5.19kB done
+[CI/CD Pipeline/Test]   | #5 DONE 0.4s
+[CI/CD Pipeline/Test]   | 
+[CI/CD Pipeline/Test]   | #6 [builder 1/4] FROM docker.io/library/python:3.12-slim@sha256:401f6e1a67dad31a1bd78e9ad22d0ee0a3b52154e6bd30e90be696bb6a3d7461
+[CI/CD Pipeline/Test]   | #6 sha256:b33ff618953dcb6177e78bc33883a49817e571a1d9f0a3aa039e3228e0f21684 0B / 250B 0.2s
+[CI/CD Pipeline/Test]   | #6 sha256:759e0c85a86e6d82ceccf351143d3f4a17e4ba196c9684240898abe3b8ec13a9 0B / 12.11MB 0.2s
+[CI/CD Pipeline/Test]   | #6 sha256:797809503061a7d1332e7b5c3df030896846f0a6a179f90060e85564dca1cf65 0B / 1.29MB 0.2s
+[CI/CD Pipeline/Test]   | #6 sha256:57fb71246055257a374deb7564ceca10f43c2352572b501efc08add5d24ebb61 0B / 29.78MB 0.2s
+[CI/CD Pipeline/Test]   | #6 sha256:b33ff618953dcb6177e78bc33883a49817e571a1d9f0a3aa039e3228e0f21684 250B / 250B 0.4s done
+[CI/CD Pipeline/Test]   | #6 sha256:759e0c85a86e6d82ceccf351143d3f4a17e4ba196c9684240898abe3b8ec13a9 1.05MB / 12.11MB 1.1s
+[CI/CD Pipeline/Test]   | #6 sha256:797809503061a7d1332e7b5c3df030896846f0a6a179f90060e85564dca1cf65 1.05MB / 1.29MB 1.4s
+[CI/CD Pipeline/Test]   | #6 sha256:759e0c85a86e6d82ceccf351143d3f4a17e4ba196c9684240898abe3b8ec13a9 2.10MB / 12.11MB 1.7s
+[CI/CD Pipeline/Test]   | #6 sha256:797809503061a7d1332e7b5c3df030896846f0a6a179f90060e85564dca1cf65 1.29MB / 1.29MB 1.5s done
+[CI/CD Pipeline/Test]   | #6 sha256:759e0c85a86e6d82ceccf351143d3f4a17e4ba196c9684240898abe3b8ec13a9 3.15MB / 12.11MB 2.3s
+[CI/CD Pipeline/Test]   | #6 sha256:57fb71246055257a374deb7564ceca10f43c2352572b501efc08add5d24ebb61 2.10MB / 29.78MB 2.4s
+[CI/CD Pipeline/Test]   | #6 sha256:759e0c85a86e6d82ceccf351143d3f4a17e4ba196c9684240898abe3b8ec13a9 4.19MB / 12.11MB 3.0s
+[CI/CD Pipeline/Test]   | #6 sha256:759e0c85a86e6d82ceccf351143d3f4a17e4ba196c9684240898abe3b8ec13a9 5.24MB / 12.11MB 3.5s
+[CI/CD Pipeline/Test]   | #6 sha256:57fb71246055257a374deb7564ceca10f43c2352572b501efc08add5d24ebb61 4.19MB / 29.78MB 3.9s
+[CI/CD Pipeline/Test]   | #6 sha256:759e0c85a86e6d82ceccf351143d3f4a17e4ba196c9684240898abe3b8ec13a9 6.29MB / 12.11MB 4.4s
+[CI/CD Pipeline/Test]   | #6 sha256:759e0c85a86e6d82ceccf351143d3f4a17e4ba196c9684240898abe3b8ec13a9 7.34MB / 12.11MB 5.1s
+[CI/CD Pipeline/Test]   | #6 sha256:57fb71246055257a374deb7564ceca10f43c2352572b501efc08add5d24ebb61 6.29MB / 29.78MB 5.1s
+[CI/CD Pipeline/Test]   | #6 sha256:759e0c85a86e6d82ceccf351143d3f4a17e4ba196c9684240898abe3b8ec13a9 8.39MB / 12.11MB 5.4s
+[CI/CD Pipeline/Test]   | #6 sha256:759e0c85a86e6d82ceccf351143d3f4a17e4ba196c9684240898abe3b8ec13a9 9.44MB / 12.11MB 5.9s
+[CI/CD Pipeline/Test]   | #6 sha256:57fb71246055257a374deb7564ceca10f43c2352572b501efc08add5d24ebb61 8.39MB / 29.78MB 5.7s
+[CI/CD Pipeline/Test]   | #6 sha256:759e0c85a86e6d82ceccf351143d3f4a17e4ba196c9684240898abe3b8ec13a9 10.49MB / 12.11MB 6.8s
+[CI/CD Pipeline/Test]   | #6 sha256:57fb71246055257a374deb7564ceca10f43c2352572b501efc08add5d24ebb61 10.49MB / 29.78MB 7.8s
+[CI/CD Pipeline/Test]   | #6 sha256:759e0c85a86e6d82ceccf351143d3f4a17e4ba196c9684240898abe3b8ec13a9 11.53MB / 12.11MB 8.1s
+[CI/CD Pipeline/Test]   | #6 sha256:759e0c85a86e6d82ceccf351143d3f4a17e4ba196c9684240898abe3b8ec13a9 12.11MB / 12.11MB 8.4s done
+[CI/CD Pipeline/Test]   | #6 sha256:57fb71246055257a374deb7564ceca10f43c2352572b501efc08add5d24ebb61 12.58MB / 29.78MB 8.7s
+[CI/CD Pipeline/Test]   | #6 sha256:57fb71246055257a374deb7564ceca10f43c2352572b501efc08add5d24ebb61 14.68MB / 29.78MB 9.6s
+[CI/CD Pipeline/Test]   | #6 sha256:57fb71246055257a374deb7564ceca10f43c2352572b501efc08add5d24ebb61 16.78MB / 29.78MB 10.4s
+[CI/CD Pipeline/Test]   | #6 sha256:57fb71246055257a374deb7564ceca10f43c2352572b501efc08add5d24ebb61 18.87MB / 29.78MB 11.1s
+[CI/CD Pipeline/Test]   | #6 sha256:57fb71246055257a374deb7564ceca10f43c2352572b501efc08add5d24ebb61 20.97MB / 29.78MB 11.8s
+[CI/CD Pipeline/Test]   | #6 sha256:57fb71246055257a374deb7564ceca10f43c2352572b501efc08add5d24ebb61 23.07MB / 29.78MB 12.2s
+[CI/CD Pipeline/Test]   | #6 sha256:57fb71246055257a374deb7564ceca10f43c2352572b501efc08add5d24ebb61 25.17MB / 29.78MB 12.8s
+[CI/CD Pipeline/Test]   | #6 sha256:57fb71246055257a374deb7564ceca10f43c2352572b501efc08add5d24ebb61 27.26MB / 29.78MB 13.4s
+[CI/CD Pipeline/Test]   | #6 sha256:57fb71246055257a374deb7564ceca10f43c2352572b501efc08add5d24ebb61 29.36MB / 29.78MB 13.8s
+[CI/CD Pipeline/Test]   | #6 sha256:57fb71246055257a374deb7564ceca10f43c2352572b501efc08add5d24ebb61 29.78MB / 29.78MB 14.0s done
+[CI/CD Pipeline/Test]   | #6 extracting sha256:57fb71246055257a374deb7564ceca10f43c2352572b501efc08add5d24ebb61
+[CI/CD Pipeline/Test]   | #6 extracting sha256:57fb71246055257a374deb7564ceca10f43c2352572b501efc08add5d24ebb61 3.6s done
+[CI/CD Pipeline/Test]   | #6 DONE 18.2s
+[CI/CD Pipeline/Test]   | 
+[CI/CD Pipeline/Test]   | #6 [builder 1/4] FROM docker.io/library/python:3.12-slim@sha256:401f6e1a67dad31a1bd78e9ad22d0ee0a3b52154e6bd30e90be696bb6a3d7461
+[CI/CD Pipeline/Test]   | #6 extracting sha256:797809503061a7d1332e7b5c3df030896846f0a6a179f90060e85564dca1cf65
+[CI/CD Pipeline/Test]   | #6 extracting sha256:797809503061a7d1332e7b5c3df030896846f0a6a179f90060e85564dca1cf65 0.5s done
+[CI/CD Pipeline/Test]   | #6 DONE 18.7s
+[CI/CD Pipeline/Test]   | 
+[CI/CD Pipeline/Test]   | #6 [builder 1/4] FROM docker.io/library/python:3.12-slim@sha256:401f6e1a67dad31a1bd78e9ad22d0ee0a3b52154e6bd30e90be696bb6a3d7461
+[CI/CD Pipeline/Test]   | #6 extracting sha256:759e0c85a86e6d82ceccf351143d3f4a17e4ba196c9684240898abe3b8ec13a9
+[CI/CD Pipeline/Test]   | #6 extracting sha256:759e0c85a86e6d82ceccf351143d3f4a17e4ba196c9684240898abe3b8ec13a9 2.6s done
+[CI/CD Pipeline/Test]   | #6 extracting sha256:b33ff618953dcb6177e78bc33883a49817e571a1d9f0a3aa039e3228e0f21684
+[CI/CD Pipeline/Test]   | #6 extracting sha256:b33ff618953dcb6177e78bc33883a49817e571a1d9f0a3aa039e3228e0f21684 0.1s done
+[CI/CD Pipeline/Test]   | #6 DONE 21.4s
+[CI/CD Pipeline/Test]   | 
+[CI/CD Pipeline/Test]   | #7 [final 2/8] WORKDIR /app
+[CI/CD Pipeline/Test]   | #7 DONE 1.0s
+[CI/CD Pipeline/Test]   | 
+[CI/CD Pipeline/Test]   | #8 [builder 2/4] WORKDIR /build
+[CI/CD Pipeline/Test]   | #8 DONE 1.1s
+[CI/CD Pipeline/Test]   | 
+[CI/CD Pipeline/Test]   | #9 [builder 3/4] COPY requirements.txt .
+[CI/CD Pipeline/Test]   | #9 DONE 0.5s
+[CI/CD Pipeline/Test]   | 
+[CI/CD Pipeline/Test]   | #10 [builder 4/4] RUN pip install     --no-cache-dir     --prefix=/install     -r requirements.txt
+[CI/CD Pipeline/Test]   | #10 8.481 Collecting flask==3.0.0 (from -r requirements.txt (line 1))
+[CI/CD Pipeline/Test]   | #10 8.691   Downloading flask-3.0.0-py3-none-any.whl.metadata (3.6 kB)
+[CI/CD Pipeline/Test]   | #10 8.774 Collecting flask-cors==4.0.0 (from -r requirements.txt (line 2))
+[CI/CD Pipeline/Test]   | #10 8.807   Downloading Flask_Cors-4.0.0-py2.py3-none-any.whl.metadata (5.4 kB)
+[CI/CD Pipeline/Test]   | #10 9.238 Collecting psycopg2-binary==2.9.9 (from -r requirements.txt (line 3))
+[CI/CD Pipeline/Test]   | #10 9.267   Downloading psycopg2_binary-2.9.9-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.4 kB)
+[CI/CD Pipeline/Test]   | #10 9.359 Collecting gunicorn==21.2.0 (from -r requirements.txt (line 4))
+[CI/CD Pipeline/Test]   | #10 9.389   Downloading gunicorn-21.2.0-py3-none-any.whl.metadata (4.1 kB)
+[CI/CD Pipeline/Test]   | #10 9.498 Collecting pytest==7.4.0 (from -r requirements.txt (line 5))
+[CI/CD Pipeline/Test]   | #10 9.529   Downloading pytest-7.4.0-py3-none-any.whl.metadata (8.0 kB)
+[CI/CD Pipeline/Test]   | #10 9.650 Collecting pytest-cov==4.1.0 (from -r requirements.txt (line 6))
+[CI/CD Pipeline/Test]   | #10 9.679   Downloading pytest_cov-4.1.0-py3-none-any.whl.metadata (26 kB)
+[CI/CD Pipeline/Test]   | #10 9.780 Collecting flake8==7.0.0 (from -r requirements.txt (line 7))
+[CI/CD Pipeline/Test]   | #10 9.811   Downloading flake8-7.0.0-py2.py3-none-any.whl.metadata (3.8 kB)
+[CI/CD Pipeline/Test]   | #10 9.929 Collecting Werkzeug>=3.0.0 (from flask==3.0.0->-r requirements.txt (line 1))
+[CI/CD Pipeline/Test]   | #10 9.959   Downloading werkzeug-3.1.8-py3-none-any.whl.metadata (4.0 kB)
+[CI/CD Pipeline/Test]   | #10 10.04 Collecting Jinja2>=3.1.2 (from flask==3.0.0->-r requirements.txt (line 1))
+[CI/CD Pipeline/Test]   | #10 10.08   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+[CI/CD Pipeline/Test]   | #10 10.14 Collecting itsdangerous>=2.1.2 (from flask==3.0.0->-r requirements.txt (line 1))
+[CI/CD Pipeline/Test]   | #10 10.18   Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+[CI/CD Pipeline/Test]   | #10 10.31 Collecting click>=8.1.3 (from flask==3.0.0->-r requirements.txt (line 1))
+[CI/CD Pipeline/Test]   | #10 10.34   Downloading click-8.4.0-py3-none-any.whl.metadata (2.6 kB)
+[CI/CD Pipeline/Test]   | #10 10.38 Collecting blinker>=1.6.2 (from flask==3.0.0->-r requirements.txt (line 1))
+[CI/CD Pipeline/Test]   | #10 10.43   Downloading blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
+[CI/CD Pipeline/Test]   | #10 10.58 Collecting packaging (from gunicorn==21.2.0->-r requirements.txt (line 4))
+[CI/CD Pipeline/Test]   | #10 10.64   Downloading packaging-26.2-py3-none-any.whl.metadata (3.5 kB)
+[CI/CD Pipeline/Test]   | #10 10.71 Collecting iniconfig (from pytest==7.4.0->-r requirements.txt (line 5))
+[CI/CD Pipeline/Test]   | #10 10.74   Downloading iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+[CI/CD Pipeline/Test]   | #10 10.78 Collecting pluggy<2.0,>=0.12 (from pytest==7.4.0->-r requirements.txt (line 5))
+[CI/CD Pipeline/Test]   | #10 10.81   Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+[CI/CD Pipeline/Test]   | #10 12.65 Collecting coverage>=5.2.1 (from coverage[toml]>=5.2.1->pytest-cov==4.1.0->-r requirements.txt (line 6))
+[CI/CD Pipeline/Test]   | #10 12.68   Downloading coverage-7.14.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.5 kB)
+[CI/CD Pipeline/Test]   | #10 12.73 Collecting mccabe<0.8.0,>=0.7.0 (from flake8==7.0.0->-r requirements.txt (line 7))
+[CI/CD Pipeline/Test]   | #10 12.76   Downloading mccabe-0.7.0-py2.py3-none-any.whl.metadata (5.0 kB)
+[CI/CD Pipeline/Test]   | #10 12.80 Collecting pycodestyle<2.12.0,>=2.11.0 (from flake8==7.0.0->-r requirements.txt (line 7))
+[CI/CD Pipeline/Test]   | #10 12.83   Downloading pycodestyle-2.11.1-py2.py3-none-any.whl.metadata (4.5 kB)
+[CI/CD Pipeline/Test]   | #10 12.90 Collecting pyflakes<3.3.0,>=3.2.0 (from flake8==7.0.0->-r requirements.txt (line 7))
+[CI/CD Pipeline/Test]   | #10 12.93   Downloading pyflakes-3.2.0-py2.py3-none-any.whl.metadata (3.5 kB)
+[CI/CD Pipeline/Test]   | #10 13.07 Collecting MarkupSafe>=2.0 (from Jinja2>=3.1.2->flask==3.0.0->-r requirements.txt (line 1))
+[CI/CD Pipeline/Test]   | #10 13.10   Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+[CI/CD Pipeline/Test]   | #10 13.15 Downloading flask-3.0.0-py3-none-any.whl (99 kB)
+[CI/CD Pipeline/Test]   | #10 13.23 Downloading Flask_Cors-4.0.0-py2.py3-none-any.whl (14 kB)
+[CI/CD Pipeline/Test]   | #10 13.26 Downloading psycopg2_binary-2.9.9-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.0 MB)
+[CI/CD Pipeline/Test]   | #10 13.93    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.0/3.0 MB 5.0 MB/s eta 0:00:00
+[CI/CD Pipeline/Test]   | #10 13.96 Downloading gunicorn-21.2.0-py3-none-any.whl (80 kB)
+[CI/CD Pipeline/Test]   | #10 14.02 Downloading pytest-7.4.0-py3-none-any.whl (323 kB)
+[CI/CD Pipeline/Test]   | #10 14.12 Downloading pytest_cov-4.1.0-py3-none-any.whl (21 kB)
+[CI/CD Pipeline/Test]   | #10 14.15 Downloading flake8-7.0.0-py2.py3-none-any.whl (57 kB)
+[CI/CD Pipeline/Test]   | #10 14.20 Downloading blinker-1.9.0-py3-none-any.whl (8.5 kB)
+[CI/CD Pipeline/Test]   | #10 14.23 Downloading click-8.4.0-py3-none-any.whl (116 kB)
+[CI/CD Pipeline/Test]   | #10 14.28 Downloading coverage-7.14.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (254 kB)
+[CI/CD Pipeline/Test]   | #10 14.38 Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+[CI/CD Pipeline/Test]   | #10 14.40 Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+[CI/CD Pipeline/Test]   | #10 14.50 Downloading mccabe-0.7.0-py2.py3-none-any.whl (7.3 kB)
+[CI/CD Pipeline/Test]   | #10 14.53 Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+[CI/CD Pipeline/Test]   | #10 14.56 Downloading pycodestyle-2.11.1-py2.py3-none-any.whl (31 kB)
+[CI/CD Pipeline/Test]   | #10 14.60 Downloading pyflakes-3.2.0-py2.py3-none-any.whl (62 kB)
+[CI/CD Pipeline/Test]   | #10 14.64 Downloading werkzeug-3.1.8-py3-none-any.whl (226 kB)
+[CI/CD Pipeline/Test]   | #10 14.79 Downloading iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+[CI/CD Pipeline/Test]   | #10 14.82 Downloading packaging-26.2-py3-none-any.whl (100 kB)
+[CI/CD Pipeline/Test]   | #10 14.90 Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+[CI/CD Pipeline/Test]   | #10 15.36 Installing collected packages: pyflakes, pycodestyle, psycopg2-binary, pluggy, packaging, mccabe, MarkupSafe, itsdangerous, iniconfig, coverage, click, blinker, Werkzeug, pytest, Jinja2, gunicorn, flake8, pytest-cov, flask, flask-cors
+[CI/CD Pipeline/Test]   | #10 21.43 Successfully installed Jinja2-3.1.6 MarkupSafe-3.0.3 Werkzeug-3.1.8 blinker-1.9.0 click-8.4.0 coverage-7.14.0 flake8-7.0.0 flask-3.0.0 flask-cors-4.0.0 gunicorn-21.2.0 iniconfig-2.3.0 itsdangerous-2.2.0 mccabe-0.7.0 packaging-26.2 pluggy-1.6.0 psycopg2-binary-2.9.9 pycodestyle-2.11.1 pyflakes-3.2.0 pytest-7.4.0 pytest-cov-4.1.0
+[CI/CD Pipeline/Test]   | #10 21.43 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+[CI/CD Pipeline/Test]   | #10 21.85 
+[CI/CD Pipeline/Test]   | #10 21.85 [notice] A new release of pip is available: 25.0.1 -> 26.1.1
+[CI/CD Pipeline/Test]   | #10 21.85 [notice] To update, run: pip install --upgrade pip
+[CI/CD Pipeline/Test]   | #10 DONE 22.4s
+[CI/CD Pipeline/Test]   | 
+[CI/CD Pipeline/Test]   | #11 [final 3/8] COPY --from=builder /install /usr/local
+[CI/CD Pipeline/Test]   | #11 DONE 1.0s
+[CI/CD Pipeline/Test]   | 
+[CI/CD Pipeline/Test]   | #12 [final 4/8] COPY app.py .
+[CI/CD Pipeline/Test]   | #12 DONE 0.3s
+[CI/CD Pipeline/Test]   | 
+[CI/CD Pipeline/Test]   | #13 [final 5/8] COPY tests ./tests
+[CI/CD Pipeline/Test]   | #13 DONE 0.2s
+[CI/CD Pipeline/Test]   | 
+[CI/CD Pipeline/Test]   | #14 [final 6/8] COPY entrypoint.sh .
+[CI/CD Pipeline/Test]   | #14 DONE 0.2s
+[CI/CD Pipeline/Test]   | 
+[CI/CD Pipeline/Test]   | #15 [final 7/8] RUN chmod +x entrypoint.sh
+[CI/CD Pipeline/Test]   | #15 DONE 0.3s
+[CI/CD Pipeline/Test]   | 
+[CI/CD Pipeline/Test]   | #16 [final 8/8] RUN useradd --create-home appuser &&     chown -R appuser /app
+[CI/CD Pipeline/Test]   | #16 DONE 0.5s
+[CI/CD Pipeline/Test]   | 
+[CI/CD Pipeline/Test]   | #17 exporting to oci image format
+[CI/CD Pipeline/Test]   | #17 exporting layers
+[CI/CD Pipeline/Test]   | #17 exporting layers 2.7s done
+[CI/CD Pipeline/Test]   | #17 exporting manifest sha256:208314bbfac56284326669c4806c7cc9be2e38df581fb17775af976fcac1a434 0.0s done
+[CI/CD Pipeline/Test]   | #17 exporting config sha256:c07f9a89177235772b374761da13c42902a6fc8d608b7db449ad108630e7cd50 0.0s done
+[CI/CD Pipeline/Test]   | #17 sending tarball
+[CI/CD Pipeline/Test] Reevaluate condition  due to cancellation
+[CI/CD Pipeline/Test]   | #17 ...
+[CI/CD Pipeline/Test]   | 
+[CI/CD Pipeline/Test]   | #18 importing to docker
+[CI/CD Pipeline/Test] Result condition keepStepRunning=false
+[CI/CD Pipeline/Test]   ❌  Failure - Main Construir contenedor backend [1m2.916921797s]
+[CI/CD Pipeline/Test] context canceled
+[CI/CD Pipeline/Test] ⭐ Run Main Apagar servicios
+[CI/CD Pipeline/Test]   🐳  docker exec cmd=[bash -e /var/run/act/workflow/7] user= workdir=
+[CI/CD Pipeline/Test]   ✅  Success - Main Apagar servicios [757.103996ms]
+[CI/CD Pipeline/Test] ⭐ Run Post Setup Docker Buildx
+[CI/CD Pipeline/Test]   🐳  docker exec cmd=[/opt/acttoolcache/node/24.15.0/x64/bin/node /var/run/act/actions/docker-setup-buildx-action@v3/dist/index.js] user= workdir=
+[CI/CD Pipeline/Test]   ❓  ::group::Removing builder
+[CI/CD Pipeline/Test]   | (node:359) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+[CI/CD Pipeline/Test]   | (Use `node --trace-deprecation ...` to show where the warning was created)
+[CI/CD Pipeline/Test]   | [command]/usr/bin/docker buildx rm builder-a829470b-296e-4a0d-8aa8-c0c8db319a00
+[CI/CD Pipeline/Test]   | builder-a829470b-296e-4a0d-8aa8-c0c8db319a00 removed
+[CI/CD Pipeline/Test]   ❓  ::endgroup::
+[CI/CD Pipeline/Test]   ❓  ::group::Cleaning up certificates
+[CI/CD Pipeline/Test]   ❓  ::endgroup::
+[CI/CD Pipeline/Test]   ❓  ::group::Post cache
+[CI/CD Pipeline/Test]   | State not set
+[CI/CD Pipeline/Test]   ❓  ::endgroup::
+[CI/CD Pipeline/Test]   ✅  Success - Post Setup Docker Buildx [3.489390185s]
+[CI/CD Pipeline/Test] ⭐ Run Complete job
+[CI/CD Pipeline/Test]   ✅  Success - Complete job
+[CI/CD Pipeline/Test] 🏁  Job failed
+Error: Job 'Test' failed
