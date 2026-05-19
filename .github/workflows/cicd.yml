@@ -85,12 +85,15 @@ jobs:
 
       - name: Ejecutar tests con cobertura
         run: |
-          docker compose exec -T backend \
-          python -m pytest tests/ \
-          --cov=. \
-          --cov-report=term-missing \
-          --cov-report=xml:/tmp/coverage.xml \
-          -v
+          docker compose exec -u root -T backend sh -c "
+            rm -f /app/.coverage /app/.coverage.* || true
+          "
+
+          docker compose exec -T backend python -m pytest tests/ \
+            --cov=. \
+            --cov-report=term-missing \
+            --cov-report=xml:/tmp/coverage.xml \
+            -v
 
       - name: Obtener cobertura
         run: |
